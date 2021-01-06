@@ -1,13 +1,21 @@
 package com.joseph.tmdb_mvvm.base
 
+import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity<T: ViewDataBinding>(
+    @LayoutRes private val resId: Int
+) : AppCompatActivity() {
 
-    inline fun <reified T: ViewDataBinding> binding(
-        @LayoutRes resId: Int
-    ): Lazy<T> = lazy { DataBindingUtil.setContentView(this, resId) }
+    lateinit var binding: T
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = DataBindingUtil.setContentView(this, resId)
+        binding.lifecycleOwner = this
+
+    }
 }

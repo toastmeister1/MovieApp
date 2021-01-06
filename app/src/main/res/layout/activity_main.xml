@@ -4,15 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:focusableInTouchMode="true"
         android:background="@color/blackBlendedWhite"
-        tools:context=".ui.MainMenuActivity">
-
+        android:focusableInTouchMode="true"
+        tools:context=".ui.MainActivity">
 
         <FrameLayout
             android:id="@+id/frameLayout"
@@ -29,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:defaultNavHost="true"
-                app:navGraph="@navigation/nav_bottom" />
+                app:navGraph="@navigation/nav_bottom_main" />
         </FrameLayout>
 
         <View
@@ -39,22 +36,21 @@
             app:layout_constraintBottom_toBottomOf="@+id/frameLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/main_bottom_navigation"
+            style="@style/Widget.MaterialComponents.BottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:elevation="1dp"
-            style="@style/Widget.MaterialComponents.BottomNavigationView"
-            app:labelVisibilityMode="labeled"
             android:background="@color/blackBlendedWhite"
+            app:elevation="1dp"
+            app:itemIconSize="20dp"
+            app:itemTextAppearanceActive="@style/BottomNavigationText_Selected"
+            app:itemTextAppearanceInactive="@style/BottomNavigationText_Unselected"
+            app:labelVisibilityMode="labeled"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:itemIconSize="20dp"
-            app:itemTextAppearanceActive="@style/BottomNavigationView.Active"
-            app:itemTextAppearanceInactive="@style/BottomNavigationView"
-            app:itemIconTint="@color/selector_bottom_nav"
-            app:itemTextColor="@color/selector_bottom_nav"
             app:menu="@menu/bottom_nav_menu" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

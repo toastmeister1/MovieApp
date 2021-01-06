@@ -1,4 +1,4 @@
-package com.joseph.tmdb_mvvm.ui.frag
+package com.joseph.tmdb_mvvm.ui.frag.category
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
