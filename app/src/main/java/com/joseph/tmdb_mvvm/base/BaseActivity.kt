@@ -1,4 +1,4 @@
-package com.joseph.tmdb_mvvm
+package com.joseph.tmdb_mvvm.base
 
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity

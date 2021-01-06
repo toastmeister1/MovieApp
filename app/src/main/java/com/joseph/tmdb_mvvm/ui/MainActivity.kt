@@ -1,7 +1,8 @@
-package com.joseph.tmdb_mvvm
+package com.joseph.tmdb_mvvm.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.joseph.tmdb_mvvm.R
+import com.joseph.tmdb_mvvm.base.BaseActivity
 import com.joseph.tmdb_mvvm.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
