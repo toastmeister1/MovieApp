@@ -5,6 +5,8 @@ import android.view.MenuItem
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.joseph.tmdb_mvvm.R
@@ -25,7 +27,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     }
 
     fun initBottomNav() {
-        navController = Navigation.findNavController(this, R.id.nav_host_fragment_container)
+        val navHostFragment =
+                supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
+        navController = navHostFragment.findNavController()
         binding.mainBottomNavigation.apply {
             setupWithNavController(navController)
             setOnNavigationItemSelectedListener { item ->

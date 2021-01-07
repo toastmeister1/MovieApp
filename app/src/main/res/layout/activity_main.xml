@@ -11,29 +11,24 @@
         android:focusableInTouchMode="true"
         tools:context=".ui.MainActivity">
 
-        <FrameLayout
-            android:id="@+id/frameLayout"
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nav_host_fragment_container"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            app:defaultNavHost="true"
             app:layout_constraintBottom_toTopOf="@+id/main_bottom_navigation"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:navGraph="@navigation/nav_bottom_main" />
 
-            <fragment
-                android:id="@+id/nav_host_fragment_container"
-                android:name="androidx.navigation.fragment.NavHostFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:defaultNavHost="true"
-                app:navGraph="@navigation/nav_bottom_main" />
-        </FrameLayout>
 
         <View
+            android:id="@+id/view2"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#33C8C8C8"
-            app:layout_constraintBottom_toBottomOf="@+id/frameLayout"
+            app:layout_constraintTop_toBottomOf="@id/nav_host_fragment_container"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -44,9 +39,11 @@
             android:layout_height="wrap_content"
             android:background="@color/blackBlendedWhite"
             app:elevation="1dp"
-            app:itemIconSize="20dp"
+            app:itemIconSize="22dp"
+            app:itemIconTint="@drawable/selector_bottom_nav_color"
             app:itemTextAppearanceActive="@style/BottomNavigationText_Selected"
             app:itemTextAppearanceInactive="@style/BottomNavigationText_Unselected"
+            app:itemTextColor="@drawable/selector_bottom_nav_color"
             app:labelVisibilityMode="labeled"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
