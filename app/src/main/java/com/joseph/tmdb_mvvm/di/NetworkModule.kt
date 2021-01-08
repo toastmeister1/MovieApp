@@ -38,7 +38,7 @@ object NetworkModule {
     fun provideRetrofitClient(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
                 .client(okHttpClient)
-                .baseUrl("https://api.themoviedb.org/3")
+                .baseUrl("https://api.themoviedb.org/3/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
     }

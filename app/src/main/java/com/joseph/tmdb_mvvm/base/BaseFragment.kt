@@ -1,5 +1,6 @@
 package com.joseph.tmdb_mvvm.base
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,9 @@ abstract class BaseFragment<T: ViewBinding>(
     @LayoutRes private val layoutId: Int
 ) : Fragment() {
     var binding: T? = null
+    val fragContext: Context by lazy {
+        requireContext()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

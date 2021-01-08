@@ -1,7 +1,6 @@
-package com.joseph.tmdb_mvvm.ui.frag.home
+package com.joseph.tmdb_mvvm.ui.frag.home.model
 
 import com.joseph.tmdb_mvvm.R
-import com.joseph.tmdb_mvvm.ui.frag.home.model.ViewPagerInfo
 
 
 object DummyViewPagerInfo{
@@ -33,6 +32,6 @@ object DummyViewPagerInfo{
         R.drawable.dummy_p4_image
     )
 
-    var DUMMY_PAGER_INFO_LIST = arrayListOf<ViewPagerInfo>(p4,p2,p3,p1)
+    var DUMMY_PAGER_INFO_LIST = arrayListOf<ViewPagerInfo>(p4, p2, p3, p1)
 
 }

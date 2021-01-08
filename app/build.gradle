@@ -94,4 +94,7 @@ dependencies {
 
     // Retrofit Logging Intercepter (1. 기본매개변수용 2. 로깅확인용)
     implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
+
+    // Paging3 Library
+    implementation "androidx.paging:paging-runtime-ktx:3.0.0-alpha11"
 }
