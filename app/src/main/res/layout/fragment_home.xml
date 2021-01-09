@@ -10,6 +10,18 @@
             name="viewModel"
             type="com.joseph.tmdb_mvvm.ui.frag.home.HomeViewModel" />
 
+        <variable
+            name="upComingAdapter"
+            type="com.joseph.tmdb_mvvm.ui.frag.home.adapter.MovieListAdapter" />
+
+        <variable
+            name="popularAdapter"
+            type="com.joseph.tmdb_mvvm.ui.frag.home.adapter.MovieListAdapter" />
+
+        <variable
+            name="topRatedAdapter"
+            type="com.joseph.tmdb_mvvm.ui.frag.home.adapter.MovieListAdapter" />
+
     </data>
 
     <ScrollView
@@ -45,6 +57,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/upcoming_recyclerview"
+                initHorizonRecyclerAdapter="@{upComingAdapter}"
                 android:layout_width="match_parent"
                 android:layout_height="280dp"
                 android:orientation="horizontal"
@@ -75,6 +88,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/popular_recyclerview"
+                initHorizonRecyclerAdapter="@{popularAdapter}"
                 android:layout_width="match_parent"
                 android:layout_height="280dp"
                 android:orientation="horizontal"
@@ -105,7 +119,8 @@
                 tools:layout_editor_absoluteX="122dp" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/latest_recyclerview"
+                android:id="@+id/top_rate_recyclerview"
+                initHorizonRecyclerAdapter="@{topRatedAdapter}"
                 android:layout_width="match_parent"
                 android:layout_height="280dp"
                 android:orientation="horizontal"

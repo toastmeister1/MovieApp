@@ -7,7 +7,9 @@ import androidx.paging.PagingData
 import com.joseph.tmdb_mvvm.model.MovieListResponse
 import com.joseph.tmdb_mvvm.network.MovieListService
 import com.joseph.tmdb_mvvm.util.Constants.TAG
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOn
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -17,8 +19,8 @@ class MovieListRepository @Inject constructor(
     fun fetchPopularMovieList(): Flow<PagingData<MovieListResponse.Movie>> {
         return Pager(
             config = PagingConfig(pageSize = NETWORK_PAGE_SIZE, enablePlaceholders = false),
-            pagingSourceFactory = {MoviePagingSource(service)}
-        ).flow
+            pagingSourceFactory = {MoviePagingSource(service, MovieListService.ListType.POPULAR)}
+        ).flow.flowOn(Dispatchers.IO)
     }
 
     companion object {

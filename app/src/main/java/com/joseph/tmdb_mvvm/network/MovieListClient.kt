@@ -6,9 +6,5 @@ class MovieListClient @Inject constructor(
     private val movieListService: MovieListService
 ) {
 
-    suspend fun fetchPopularMovieList(
-        numPage: Int
-    ) = movieListService.fetchPopularMovieList(
-        page = numPage
-    )
+    suspend fun fetchPopularMovieList(numPage: Int) = movieListService.fetchPopularMovieList(page = numPage)
 }

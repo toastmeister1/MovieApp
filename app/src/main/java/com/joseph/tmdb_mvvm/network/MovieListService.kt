@@ -14,4 +14,16 @@ interface MovieListService {
         @Query("language") language: String = "ko-KR",
         @Query("api_key") api_key: String = BuildConfig.TMDB_API_KEY
     ): MovieListResponse
+
+    @GET("movie/upcoming")
+    suspend fun fetchUpComingMovieList(
+        @Query("page") page: Int = 1,
+        @Query("language") language: String = "ko-KR",
+        @Query("api_key") api_key: String = BuildConfig.TMDB_API_KEY
+    ): MovieListResponse
+
+
+    enum class ListType {
+        POPULAR, LATEST, UPCOMING
+    }
 }

@@ -16,15 +16,4 @@ import javax.inject.Singleton
 @InstallIn(ApplicationComponent::class)
 object AppModule {
 
-    @Provides
-    @Singleton
-    fun provideGlideInstance(
-        @ApplicationContext context: Context
-    ) = Glide.with(context)
-        .setDefaultRequestOptions(
-            RequestOptions()
-                .placeholder(R.drawable.image_placeholder)
-                .error(R.drawable.image_placeholder)
-                .diskCacheStrategy(DiskCacheStrategy.DATA)
-        )
 }
