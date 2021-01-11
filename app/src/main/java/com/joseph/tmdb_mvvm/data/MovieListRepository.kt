@@ -23,6 +23,21 @@ class MovieListRepository @Inject constructor(
         ).flow.flowOn(Dispatchers.IO)
     }
 
+    fun fetchTopRatedMovieList(): Flow<PagingData<MovieListResponse.Movie>> {
+        return Pager(
+                config = PagingConfig(pageSize = NETWORK_PAGE_SIZE, enablePlaceholders = false),
+                pagingSourceFactory = {MoviePagingSource(service, MovieListService.ListType.TOPRATED)}
+        ).flow.flowOn(Dispatchers.IO)
+    }
+
+    fun fetchUpComingMovieList(): Flow<PagingData<MovieListResponse.Movie>> {
+        return Pager(
+                config = PagingConfig(pageSize = NETWORK_PAGE_SIZE, enablePlaceholders = false),
+                pagingSourceFactory = {MoviePagingSource(service, MovieListService.ListType.UPCOMING)}
+        ).flow.flowOn(Dispatchers.IO)
+    }
+
+
     companion object {
         private const val NETWORK_PAGE_SIZE = 50
     }

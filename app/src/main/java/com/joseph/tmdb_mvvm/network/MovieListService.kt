@@ -10,20 +10,27 @@ interface MovieListService {
 
     @GET("movie/popular")
     suspend fun fetchPopularMovieList(
-        @Query("page") page: Int = 1,
-        @Query("language") language: String = "ko-KR",
-        @Query("api_key") api_key: String = BuildConfig.TMDB_API_KEY
+            @Query("page") page: Int = 1,
+            @Query("language") language: String = "ko-KR",
+            @Query("api_key") api_key: String = BuildConfig.TMDB_API_KEY
+    ): MovieListResponse
+
+    @GET("movie/top_rated")
+    suspend fun fetchTopRatedMovieList(
+            @Query("page") page: Int = 1,
+            @Query("language") language: String = "ko-KR",
+            @Query("api_key") api_key: String = BuildConfig.TMDB_API_KEY
     ): MovieListResponse
 
     @GET("movie/upcoming")
     suspend fun fetchUpComingMovieList(
-        @Query("page") page: Int = 1,
-        @Query("language") language: String = "ko-KR",
-        @Query("api_key") api_key: String = BuildConfig.TMDB_API_KEY
+            @Query("page") page: Int = 1,
+            @Query("language") language: String = "ko-KR",
+            @Query("api_key") api_key: String = BuildConfig.TMDB_API_KEY
     ): MovieListResponse
 
 
     enum class ListType {
-        POPULAR, LATEST, UPCOMING
+        POPULAR, TOPRATED, UPCOMING
     }
 }

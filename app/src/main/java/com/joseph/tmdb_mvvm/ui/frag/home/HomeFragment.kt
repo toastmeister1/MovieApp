@@ -25,7 +25,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private val homeViewModel by viewModels<HomeViewModel>()
     private lateinit var viewPagerAdater: MainViewPagerAdapter
 
-    private var job: Job? = null
+    private var job1: Job? = null
+    private var job2: Job? = null
+    private var job3: Job? = null
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -39,15 +42,36 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         initViewPager()
 
         fetchPopularList()
+        fetchUpComingList()
+        fetchTopRatedList()
     }
 
     private fun fetchPopularList() {
-        job?.cancel()
-        job = lifecycleScope.launch {
+        job1?.cancel()
+        job1 = lifecycleScope.launch {
             homeViewModel.fetchPopularMovieList().collectLatest {
                 binding?.popularAdapter?.submitData(it)
             }
         }
+    }
+
+    private fun fetchUpComingList() {
+        job2?.cancel()
+        job2 = lifecycleScope.launch {
+            homeViewModel.fetchUpComingMovieList().collectLatest {
+                binding?.upComingAdapter?.submitData(it)
+            }
+        }
+    }
+
+    private fun fetchTopRatedList() {
+        job3?.cancel()
+        job3 = lifecycleScope.launch {
+            homeViewModel.fetchTopRatedMovieList().collectLatest {
+                binding?.topRatedAdapter?.submitData(it)
+            }
+        }
+
     }
 
     private fun initViewPager() {

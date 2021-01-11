@@ -23,11 +23,11 @@ class MoviePagingSource @Inject constructor(
                     ListType.POPULAR -> {
                         service.fetchPopularMovieList(position)
                     }
-                    ListType.LATEST -> {
-                        service.fetchPopularMovieList()
-                    }
                     ListType.UPCOMING -> {
-                        service.fetchPopularMovieList()
+                        service.fetchUpComingMovieList(position)
+                    }
+                    ListType.TOPRATED -> {
+                        service.fetchTopRatedMovieList(position)
                     }
                 }
 

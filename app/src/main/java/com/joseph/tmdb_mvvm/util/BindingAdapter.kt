@@ -28,12 +28,15 @@ fun setImageWithSrc(view: ImageView, src: Int) {
 }
 
 @BindingAdapter("setImageWithURL")
-fun setImageWithUrl(view: ImageView, url: String) {
-    Glide.with(view.context)
-        .load(IMAGE_URL_THUMB + url)
-        .override(320,480)
-        .placeholder(R.drawable.image_placeholder)
-        .into(view)
+fun setImageWithUrl(view: ImageView, url: String?) {
+    if(url != null) {
+        Glide.with(view.context)
+                .load(IMAGE_URL_THUMB + url)
+                .override(320,480)
+                .placeholder(R.drawable.image_placeholder)
+                .into(view)
+    }
+
 }
 
 @BindingAdapter("initHorizonRecyclerAdapter")
