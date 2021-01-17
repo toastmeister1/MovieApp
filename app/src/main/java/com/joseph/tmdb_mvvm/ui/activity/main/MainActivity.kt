@@ -1,18 +1,13 @@
-package com.joseph.tmdb_mvvm.ui
+package com.joseph.tmdb_mvvm.ui.activity.main
 
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.joseph.tmdb_mvvm.R
 import com.joseph.tmdb_mvvm.base.BaseActivity
 import com.joseph.tmdb_mvvm.databinding.ActivityMainBinding
-import com.joseph.tmdb_mvvm.ui.frag.home.HomeFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

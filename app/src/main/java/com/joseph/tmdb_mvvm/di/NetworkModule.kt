@@ -3,6 +3,7 @@ package com.joseph.tmdb_mvvm.di
 import android.util.Log
 import com.joseph.tmdb_mvvm.network.MovieListClient
 import com.joseph.tmdb_mvvm.network.MovieListService
+import com.joseph.tmdb_mvvm.network.MovieService
 import com.joseph.tmdb_mvvm.util.Constants.TAG
 import dagger.Module
 import dagger.Provides
@@ -53,5 +54,11 @@ object NetworkModule {
     @Singleton
     fun provideMovieListClient(movieListService: MovieListService) : MovieListClient {
         return MovieListClient(movieListService)
+    }
+
+    @Provides
+    @Singleton
+    fun provideMovieService(retrofit: Retrofit): MovieService {
+        return retrofit.create(MovieService::class.java)
     }
 }

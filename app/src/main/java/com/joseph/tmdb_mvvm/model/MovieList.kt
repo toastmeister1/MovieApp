@@ -3,7 +3,7 @@ package com.joseph.tmdb_mvvm.model
 
 import com.google.gson.annotations.SerializedName
 
-data class MovieListResponse(
+data class MovieList(
     @SerializedName("page")
     var page: Int,
     @SerializedName("results")

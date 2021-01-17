@@ -5,7 +5,7 @@
     <data>
         <variable
             name="movieData"
-            type="com.joseph.tmdb_mvvm.model.MovieListResponse.Movie" />
+            type="com.joseph.tmdb_mvvm.model.MovieList.Movie" />
 
     </data>
 
