@@ -7,9 +7,7 @@ data class MovieDetail(
     @SerializedName("adult")
     var adult: Boolean,
     @SerializedName("backdrop_path")
-    var backdropPath: Any,
-    @SerializedName("belongs_to_collection")
-    var belongsToCollection: Any,
+    var backdropPath: String?,
     @SerializedName("budget")
     var budget: Int,
     @SerializedName("genres")

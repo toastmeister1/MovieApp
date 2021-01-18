@@ -25,6 +25,10 @@ class MovieDetailViewModel @ViewModelInject constructor(
     val movie: LiveData<MovieDetail>
         get() = _movie
 
+    val genre: LiveData<List<MovieDetail.Genre>>
+    get() = _movie.map {
+        it.genres
+    }
 
     init {
         _movieId.value = savedStateHandle.get<Int>("movieId")

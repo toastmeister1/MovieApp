@@ -1,6 +1,7 @@
 package com.joseph.tmdb_mvvm.util
 
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,20 +15,18 @@ const val IMAGE_URL_ORIGIN = "https://image.tmdb.org/t/p/original"
 @BindingAdapter("setImageWithSrc")
 fun setImageWithSrc(view: ImageView, src: Int) {
     Glide.with(view.context)
-        .load(src)
-        .into(view)
+            .load(src)
+            .into(view)
 }
 
 @BindingAdapter("setImageWithURL")
 fun setImageWithUrl(view: ImageView, url: String?) {
-    if(url != null) {
+    if (url != null) {
         Glide.with(view.context)
-                .load(IMAGE_URL_THUMB + url)
-                .override(320,480)
+                .load(IMAGE_URL_ORIGIN + url)
                 .placeholder(R.drawable.image_placeholder)
                 .into(view)
     }
-
 }
 
 @BindingAdapter("initHorizonRecyclerAdapter")
@@ -38,6 +37,17 @@ fun initHorizontalRecyclerAdapter(view: RecyclerView, adapter: MovieListAdapter)
         setHasFixedSize(true)
         setLayoutManager(layoutManager)
     }
+}
+
+@BindingAdapter("setText")
+fun <T : Any> setText(view: TextView, text: T?) {
+    text?.let {
+        view.text = it.toString()
+    }
+}
+
+@BindingAdapter("setTextList")
+fun <T : Any> setTextList(view: TextView, textList: List<T>) {
 }
 
 

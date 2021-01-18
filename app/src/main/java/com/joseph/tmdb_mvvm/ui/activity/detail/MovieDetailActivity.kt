@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.chip.Chip
 import com.joseph.tmdb_mvvm.R
 import com.joseph.tmdb_mvvm.base.BaseActivity
 import com.joseph.tmdb_mvvm.databinding.ActivityMovieDetailBinding
@@ -22,5 +23,7 @@ class MovieDetailActivity :
             lifecycleOwner = this@MovieDetailActivity
             viewModel = movieDetailViewModel
         }
+
+
     }
 }
