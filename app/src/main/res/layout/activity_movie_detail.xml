@@ -32,7 +32,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="320dp"
                     android:scaleType="centerCrop"
-                    setImageWithURL="@{viewModel.movie.backdropPath}"
+                    setOriginImageWithURL="@{viewModel.movie.backdropPath}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -57,36 +57,34 @@
                     android:paddingEnd="18dp"
                     setText="@{viewModel.movie.title}"
                     android:textColor="#FFF"
-                    android:textSize="32sp"
+                    android:textSize="24sp"
                     app:layout_constraintTop_toBottomOf="@+id/md_backdrop_imageview"
                     tools:layout_editor_absoluteX="0dp" />
-
 
                 <TextView
                     android:id="@+id/md_tagline_textview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:fontFamily="@font/sandol_regular"
                     android:gravity="center"
                     android:maxLines="2"
                     android:paddingStart="18dp"
-                    setText="@{viewModel.genre}"
                     android:paddingEnd="18dp"
+                    setText="@{viewModel.movie.tagline}"
                     android:textColor="#FFF"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     app:layout_constraintTop_toBottomOf="@+id/md_title_textview"
                     tools:layout_editor_absoluteX="0dp" />
 
                 <TextView
                     android:id="@+id/md_release_textview"
-                    android:layout_width="409dp"
-                    android:layout_height="17dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:fontFamily="@font/sandol_regular"
                     android:gravity="center"
-                    android:paddingStart="18dp"
-                    setText="@{viewModel.movie.releaseDate}"
+                    setText="@{viewModel.movie.releaseDate.trim()}"
                     android:textColor="#8F8F8F"
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -156,7 +154,7 @@
                     android:fontFamily="@font/sandol_regular"
                     android:letterSpacing="0.05"
                     android:textColor="#FFF"
-                    setText="@{viewModel.movie.runtime"
+                    android:text="@{String.valueOf(viewModel.movie.runtime)}"
                     android:textSize="22sp"
                     app:layout_constraintEnd_toEndOf="@+id/runtime_text"
                     app:layout_constraintStart_toStartOf="@+id/runtime_text"
@@ -194,7 +192,7 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/sandol_regular"
                     android:letterSpacing="0.05"
-                    android:text="가능"
+                    isYouthCanWatch="@{viewModel.movie.adult}"
                     android:textColor="#FFF"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="@+id/adult_text"
@@ -206,13 +204,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="36dp"
                     android:layout_marginTop="8dp"
-                    android:paddingStart="18dp"
+                    bindList="@{viewModel.genre}"
                     app:flow_horizontalAlign="center"
                     app:layout_constraintEnd_toEndOf="@+id/md_release_textview"
                     app:layout_constraintStart_toStartOf="@+id/md_release_textview"
-                    app:layout_constraintTop_toBottomOf="@+id/md_release_textview">
+                    app:layout_constraintTop_toBottomOf="@+id/md_release_textview"/>
 
-                </com.google.android.material.chip.ChipGroup>
 
                 <TextView
                     android:id="@+id/text_overview"
