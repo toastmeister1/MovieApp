@@ -8,6 +8,7 @@ import com.google.android.material.chip.Chip
 import com.joseph.tmdb_mvvm.R
 import com.joseph.tmdb_mvvm.base.BaseActivity
 import com.joseph.tmdb_mvvm.databinding.ActivityMovieDetailBinding
+import com.joseph.tmdb_mvvm.ui.activity.detail.adapter.CreditsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,8 +23,7 @@ class MovieDetailActivity :
         binding.apply {
             lifecycleOwner = this@MovieDetailActivity
             viewModel = movieDetailViewModel
+            creditAdapter = CreditsAdapter()
         }
-
-
     }
 }

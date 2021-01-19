@@ -5,6 +5,7 @@ import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.joseph.tmdb_mvvm.data.MovieRepository
+import com.joseph.tmdb_mvvm.model.MovieCredits
 import com.joseph.tmdb_mvvm.model.MovieDetail
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -13,8 +14,8 @@ import timber.log.Timber
 import javax.inject.Inject
 
 class MovieDetailViewModel @ViewModelInject constructor(
-    private val repository: MovieRepository?,
-    @Assisted private val savedStateHandle: SavedStateHandle
+        private val repository: MovieRepository?,
+        @Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     private var _movieId = MutableLiveData<Int>()
@@ -26,21 +27,34 @@ class MovieDetailViewModel @ViewModelInject constructor(
         get() = _movie
 
     val genre: LiveData<List<MovieDetail.Genre>>
-    get() = _movie.map {
-        it.genres
-    }
+        get() = _movie.map {
+            it.genres
+        }
+
+    private var _credits = MutableLiveData<MovieCredits>()
+    val credits: LiveData<List<MovieCredits.Cast>>
+        get() = _credits.map { it.cast }
+
 
     init {
         _movieId.value = savedStateHandle.get<Int>("movieId")
-        getMovieDetail(movieId.value!!)
+        viewModelScope.launch {
+            getMovieDetail(movieId.value!!)
+            getMovieCredits(movieId.value!!)
+        }
     }
 
-    private fun getMovieDetail(movieId: Int) {
-        viewModelScope.launch {
-            _movie.value = withContext(Dispatchers.IO) {
-                repository?.getMovieDetail(movieId)
-            }
-            Timber.d(_movie.value.toString())
+    private suspend fun getMovieDetail(movieId: Int) {
+        _movie.value = withContext(Dispatchers.IO) {
+            repository?.getMovieDetail(movieId)
         }
+        Timber.d(_movie.value.toString())
+    }
+
+    private suspend fun getMovieCredits(movieId: Int) {
+        _credits.value = withContext(Dispatchers.IO) {
+                repository?.getMovieCredits(movieId)
+        }
+        Timber.d(credits.value.toString())
     }
 }

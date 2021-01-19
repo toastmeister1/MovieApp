@@ -8,6 +8,10 @@
             name="viewModel"
             type="com.joseph.tmdb_mvvm.ui.activity.detail.MovieDetailViewModel" />
 
+        <variable
+            name="creditAdapter"
+            type="com.joseph.tmdb_mvvm.ui.activity.detail.adapter.CreditsAdapter" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -29,10 +33,10 @@
 
                 <ImageView
                     android:id="@+id/md_backdrop_imageview"
+                    setOriginImageWithURL="@{viewModel.movie.backdropPath}"
                     android:layout_width="match_parent"
                     android:layout_height="320dp"
                     android:scaleType="centerCrop"
-                    setOriginImageWithURL="@{viewModel.movie.backdropPath}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -48,6 +52,7 @@
 
                 <TextView
                     android:id="@+id/md_title_textview"
+                    setText="@{viewModel.movie.title}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -55,7 +60,6 @@
                     android:gravity="center"
                     android:paddingStart="18dp"
                     android:paddingEnd="18dp"
-                    setText="@{viewModel.movie.title}"
                     android:textColor="#FFF"
                     android:textSize="24sp"
                     app:layout_constraintTop_toBottomOf="@+id/md_backdrop_imageview"
@@ -63,6 +67,7 @@
 
                 <TextView
                     android:id="@+id/md_tagline_textview"
+                    setText="@{viewModel.movie.tagline}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -71,7 +76,6 @@
                     android:maxLines="2"
                     android:paddingStart="18dp"
                     android:paddingEnd="18dp"
-                    setText="@{viewModel.movie.tagline}"
                     android:textColor="#FFF"
                     android:textSize="12sp"
                     app:layout_constraintTop_toBottomOf="@+id/md_title_textview"
@@ -79,12 +83,12 @@
 
                 <TextView
                     android:id="@+id/md_release_textview"
+                    setText="@{viewModel.movie.releaseDate.trim()}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/sandol_regular"
                     android:gravity="center"
-                    setText="@{viewModel.movie.releaseDate.trim()}"
                     android:textColor="#8F8F8F"
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -107,13 +111,13 @@
 
                 <TextView
                     android:id="@+id/md_vote_avg_textview"
+                    setText="@{viewModel.movie.voteAverage}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/sandol_regular"
                     android:gravity="center"
                     android:letterSpacing="0.05"
-                    setText="@{viewModel.movie.voteAverage}"
                     android:textColor="#FFF"
                     android:textSize="22sp"
                     app:layout_constraintEnd_toEndOf="@+id/rating_text"
@@ -153,8 +157,8 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/sandol_regular"
                     android:letterSpacing="0.05"
-                    android:textColor="#FFF"
                     android:text="@{String.valueOf(viewModel.movie.runtime)}"
+                    android:textColor="#FFF"
                     android:textSize="22sp"
                     app:layout_constraintEnd_toEndOf="@+id/runtime_text"
                     app:layout_constraintStart_toStartOf="@+id/runtime_text"
@@ -187,12 +191,12 @@
 
                 <TextView
                     android:id="@+id/md_adult_textview"
+                    isYouthCanWatch="@{viewModel.movie.adult}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/sandol_regular"
                     android:letterSpacing="0.05"
-                    isYouthCanWatch="@{viewModel.movie.adult}"
                     android:textColor="#FFF"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="@+id/adult_text"
@@ -201,14 +205,14 @@
 
                 <com.google.android.material.chip.ChipGroup
                     android:id="@+id/md_genre_chipgroup"
+                    bindList="@{viewModel.genre}"
                     android:layout_width="wrap_content"
                     android:layout_height="36dp"
                     android:layout_marginTop="8dp"
-                    bindList="@{viewModel.genre}"
                     app:flow_horizontalAlign="center"
                     app:layout_constraintEnd_toEndOf="@+id/md_release_textview"
                     app:layout_constraintStart_toStartOf="@+id/md_release_textview"
-                    app:layout_constraintTop_toBottomOf="@+id/md_release_textview"/>
+                    app:layout_constraintTop_toBottomOf="@+id/md_release_textview" />
 
 
                 <TextView
@@ -226,6 +230,7 @@
 
                 <TextView
                     android:id="@+id/md_overview_textview"
+                    setText="@{viewModel.movie.overview}"
                     android:layout_width="414dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -237,7 +242,6 @@
                     android:paddingTop="8dp"
                     android:paddingEnd="18dp"
                     android:paddingBottom="12dp"
-                    setText="@{viewModel.movie.overview}"
                     android:textColor="#FFF"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -259,10 +263,13 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/md_credits_recyclerview"
+                    adapter="@{creditAdapter}"
+                    adapterCreditList="@{viewModel.credits}"
                     android:layout_width="match_parent"
                     android:layout_height="290dp"
                     android:orientation="horizontal"
                     android:padding="18dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintTop_toBottomOf="@+id/text_credit"
                     tools:listitem="@layout/item_credit" />
 

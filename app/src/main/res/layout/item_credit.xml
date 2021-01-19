@@ -2,6 +2,14 @@
 
 <layout>
 
+    <data>
+
+        <variable
+            name="credits"
+            type="com.joseph.tmdb_mvvm.model.MovieCredits.Cast" />
+
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -12,6 +20,7 @@
 
         <ImageView
             android:id="@+id/item_cr_profile_imageview"
+            setThumbImageWithURL="@{credits.profilePath}"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:scaleType="centerCrop"
@@ -30,7 +39,7 @@
             android:maxLines="1"
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
-            android:text="Bred Pitt"
+            android:text="@{String.valueOf(credits.name)}"
             android:textColor="#FFF"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +57,7 @@
             android:maxLines="1"
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
-            android:text="Edward Norton 역"
+            android:text="@{String.valueOf(credits.character)}"
             android:textColor="#A8A8A8"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
