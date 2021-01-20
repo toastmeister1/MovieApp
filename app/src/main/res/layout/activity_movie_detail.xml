@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -12,11 +14,13 @@
             name="creditAdapter"
             type="com.joseph.tmdb_mvvm.ui.activity.detail.adapter.CreditsAdapter" />
 
+        <variable
+            name="recommendAdapter"
+            type="com.joseph.tmdb_mvvm.ui.activity.detail.adapter.RecommendAdapter" />
+
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/blackBlendedWhite"
@@ -24,6 +28,7 @@
         tools:context=".ui.activity.detail.MovieDetailActivity">
 
         <ScrollView
+            android:id="@+id/scrollView2"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -52,7 +57,7 @@
 
                 <TextView
                     android:id="@+id/md_title_textview"
-                    setText="@{viewModel.movie.title}"
+                    setTextOrGone="@{viewModel.movie.title}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -67,7 +72,7 @@
 
                 <TextView
                     android:id="@+id/md_tagline_textview"
-                    setText="@{viewModel.movie.tagline}"
+                    setTextOrGone="@{viewModel.movie.tagline}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -83,7 +88,7 @@
 
                 <TextView
                     android:id="@+id/md_release_textview"
-                    setText="@{viewModel.movie.releaseDate.trim()}"
+                    setTextOrGone="@{viewModel.movie.releaseDate.trim()}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -111,7 +116,7 @@
 
                 <TextView
                     android:id="@+id/md_vote_avg_textview"
-                    setText="@{viewModel.movie.voteAverage}"
+                    setTextOrGone="@{viewModel.movie.voteAverage}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -119,7 +124,7 @@
                     android:gravity="center"
                     android:letterSpacing="0.05"
                     android:textColor="#FFF"
-                    android:textSize="22sp"
+                    android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="@+id/rating_text"
                     app:layout_constraintStart_toStartOf="@+id/rating_text"
                     app:layout_constraintTop_toBottomOf="@+id/rating_text" />
@@ -132,7 +137,7 @@
                     android:fontFamily="@font/sandol_regular"
                     android:text="점"
                     android:textColor="#FFF"
-                    android:textSize="10sp"
+                    android:textSize="8sp"
                     app:layout_constraintBottom_toBottomOf="@+id/md_vote_avg_textview"
                     app:layout_constraintStart_toEndOf="@+id/md_vote_avg_textview" />
 
@@ -159,7 +164,7 @@
                     android:letterSpacing="0.05"
                     android:text="@{String.valueOf(viewModel.movie.runtime)}"
                     android:textColor="#FFF"
-                    android:textSize="22sp"
+                    android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="@+id/runtime_text"
                     app:layout_constraintStart_toStartOf="@+id/runtime_text"
                     app:layout_constraintTop_toBottomOf="@+id/runtime_text" />
@@ -173,7 +178,7 @@
                     android:fontFamily="@font/sandol_regular"
                     android:text="분"
                     android:textColor="#FFF"
-                    android:textSize="10sp"
+                    android:textSize="8sp"
                     app:layout_constraintBottom_toBottomOf="@+id/md_runtime_textview"
                     app:layout_constraintStart_toEndOf="@+id/md_runtime_textview" />
 
@@ -198,14 +203,14 @@
                     android:fontFamily="@font/sandol_regular"
                     android:letterSpacing="0.05"
                     android:textColor="#FFF"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="@+id/adult_text"
                     app:layout_constraintStart_toStartOf="@+id/adult_text"
                     app:layout_constraintTop_toBottomOf="@+id/adult_text" />
 
                 <com.google.android.material.chip.ChipGroup
                     android:id="@+id/md_genre_chipgroup"
-                    bindList="@{viewModel.genre}"
+                    bindChipList="@{viewModel.genre}"
                     android:layout_width="wrap_content"
                     android:layout_height="36dp"
                     android:layout_marginTop="8dp"
@@ -230,13 +235,13 @@
 
                 <TextView
                     android:id="@+id/md_overview_textview"
-                    setText="@{viewModel.movie.overview}"
+                    setTextOrGone="@{viewModel.movie.overview}"
                     android:layout_width="414dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/sandol_regular"
                     android:gravity="start"
-                    android:letterSpacing="0.05"
+                    android:letterSpacing="0.02"
                     android:lineSpacingExtra="4dp"
                     android:paddingStart="18dp"
                     android:paddingTop="8dp"
@@ -289,13 +294,15 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/md_recommand_recyclerview"
+                    adapter="@{recommendAdapter}"
+                    adapterRecommendList="@{viewModel.recommendList}"
                     android:layout_width="match_parent"
                     android:layout_height="340dp"
                     android:orientation="vertical"
                     android:padding="18dp"
                     app:layout_constraintTop_toBottomOf="@+id/text_recommand"
                     tools:itemCount="4"
-                    tools:listitem="@layout/item_credit" />
+                    tools:listitem="@layout/item_recommand" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 

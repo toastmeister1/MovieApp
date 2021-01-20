@@ -1,8 +1,11 @@
 package com.joseph.tmdb_mvvm.util
 
 import android.view.Gravity
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.view.isGone
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -55,37 +58,47 @@ fun initHorizontalRecyclerAdapter(view: RecyclerView, adapter: MovieListAdapter)
     }
 }
 
-@BindingAdapter("setText")
+@BindingAdapter("setTextOrGone")
 fun <T : Any> setText(view: TextView, text: T?) {
-    text?.let {
-        view.text = it.toString()
+    if (text != null) {
+        view.text = text.toString()
+        view.gone(false)
+    } else {
+        view.gone(true)
     }
 }
 
-@BindingAdapter("bindList")
-fun bindList(view: ChipGroup, list: List<MovieDetail.Genre>?) {
+@BindingAdapter("bindChipList")
+fun bindChipList(view: ChipGroup, list: List<MovieDetail.Genre>?) {
 
-    list?.forEach { genre ->
-        val chip = Chip(view.context).apply{
-            text = genre.name
-            isCheckable = false
-            setTextAppearance(R.style.ChipTextAppearance)
-            setChipBackgroundColorResource(R.color.watchaPink)
-            elevation = 2F
-            gravity = Gravity.CENTER
+    list?.let {
+        it.forEach { genre ->
+            val chip = Chip(view.context).apply {
+                text = genre.name
+                isCheckable = false
+                setTextAppearance(R.style.ChipTextAppearance)
+                setChipBackgroundColorResource(R.color.watchaPink)
+                elevation = 2F
+                gravity = Gravity.CENTER
+            }
+
+            view.addView(chip)
         }
-
-        view.addView(chip)
     }
 }
 
 @BindingAdapter("isYouthCanWatch")
-fun isYouthCanWatch (view: TextView, isAdult: Boolean) {
-    if(isAdult) {
+fun isYouthCanWatch(view: TextView, isAdult: Boolean) {
+    if (isAdult) {
         view.text = "관람불가"
     } else {
         view.text = "관람가능"
     }
+}
+
+@BindingAdapter("gone")
+fun bindGone(view: View, shouldBeGone: Boolean) {
+    view.gone(shouldBeGone)
 }
 
 

@@ -14,9 +14,9 @@ class CreditsAdapter: RecyclerView.Adapter<CreditsAdapter.CreditsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CreditsViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = DataBindingUtil.inflate<ItemCreditBinding>(inflater, R.layout.item_credit,parent, false)
+        val binding = DataBindingUtil.inflate<ItemCreditBinding>(inflater, R.layout.item_credit,parent, false)
 
-        return CreditsViewHolder(view)
+        return CreditsViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: CreditsViewHolder, position: Int) {

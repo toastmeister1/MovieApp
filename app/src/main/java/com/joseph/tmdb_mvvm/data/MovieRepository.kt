@@ -9,4 +9,5 @@ class MovieRepository @Inject constructor(
     suspend fun getMovieDetail(movieId: Int) = service.getMovieDetail(movieId)
 
     suspend fun getMovieCredits(movieId: Int) = service.getMovieCredit(movieId)
+
 }

@@ -9,22 +9,23 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.joseph.tmdb_mvvm.R
 import com.joseph.tmdb_mvvm.databinding.ItemMovieBinding
+import com.joseph.tmdb_mvvm.model.Movie
 import com.joseph.tmdb_mvvm.model.MovieDetail
 import com.joseph.tmdb_mvvm.model.MovieList
 import com.joseph.tmdb_mvvm.ui.activity.detail.MovieDetailActivity
 
 class MovieListAdapter :
-    PagingDataAdapter<MovieList.Movie, MovieListAdapter.MovieListViewHolder>(
-        MOVIE_COMPARATOR
-    ) {
+        PagingDataAdapter<Movie, MovieListAdapter.MovieListViewHolder>(
+                MOVIE_COMPARATOR
+        ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val view = DataBindingUtil.inflate<ItemMovieBinding>(
-            layoutInflater,
-            R.layout.item_movie,
-            parent,
-            false
+                layoutInflater,
+                R.layout.item_movie,
+                parent,
+                false
         )
         return MovieListViewHolder(view)
     }
@@ -34,9 +35,9 @@ class MovieListAdapter :
     }
 
     inner class MovieListViewHolder(private var binding: ItemMovieBinding) :
-        RecyclerView.ViewHolder(binding.root){
+            RecyclerView.ViewHolder(binding.root) {
 
-        fun onBind(item: MovieList.Movie) {
+        fun onBind(item: Movie) {
 
             binding.apply {
                 this.movieData = item
@@ -52,18 +53,18 @@ class MovieListAdapter :
     }
 
     companion object {
-        private val MOVIE_COMPARATOR = object : DiffUtil.ItemCallback<MovieList.Movie>() {
+        private val MOVIE_COMPARATOR = object : DiffUtil.ItemCallback<Movie>() {
             override fun areItemsTheSame(
-                    oldItem: MovieList.Movie,
-                    newItem: MovieList.Movie
+                    oldItem: Movie,
+                    newItem: Movie
             ): Boolean =
-                oldItem.id == newItem.id
+                    oldItem.id == newItem.id
 
             override fun areContentsTheSame(
-                    oldItem: MovieList.Movie,
-                    newItem: MovieList.Movie
+                    oldItem: Movie,
+                    newItem: Movie
             ): Boolean =
-                oldItem == newItem
+                    oldItem == newItem
         }
     }
 
