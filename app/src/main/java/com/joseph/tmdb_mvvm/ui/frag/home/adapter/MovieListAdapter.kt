@@ -14,10 +14,7 @@ import com.joseph.tmdb_mvvm.model.MovieDetail
 import com.joseph.tmdb_mvvm.model.MovieList
 import com.joseph.tmdb_mvvm.ui.activity.detail.MovieDetailActivity
 
-class MovieListAdapter :
-        PagingDataAdapter<Movie, MovieListAdapter.MovieListViewHolder>(
-                MOVIE_COMPARATOR
-        ) {
+class MovieListAdapter : PagingDataAdapter<Movie, MovieListAdapter.MovieListViewHolder>(MOVIE_COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -34,7 +31,7 @@ class MovieListAdapter :
         holder.onBind(getItem(position)!!)
     }
 
-    inner class MovieListViewHolder(private var binding: ItemMovieBinding) :
+    class MovieListViewHolder(private var binding: ItemMovieBinding) :
             RecyclerView.ViewHolder(binding.root) {
 
         fun onBind(item: Movie) {
