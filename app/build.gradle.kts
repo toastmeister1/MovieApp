@@ -1,9 +1,12 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
 }
+val apiKey = gradleLocalProperties(rootDir).getProperty("TMDB_API_KEY")
 
 android {
     compileSdkVersion (30)
@@ -16,7 +19,7 @@ android {
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField ("String", "TMDB_API_KEY", "a1f8376a2ee3f152380b68f443070d2c")
+        buildConfigField ("String", "TMDB_API_KEY", apiKey)
     }
 
     buildTypes {
@@ -33,8 +36,8 @@ android {
         jvmTarget = "1.8"
     }
 
-    dataBinding {
-        isEnabled = true
+    buildFeatures {
+        dataBinding = true
     }
 }
 
