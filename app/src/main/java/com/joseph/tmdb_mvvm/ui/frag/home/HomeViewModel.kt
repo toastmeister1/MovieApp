@@ -7,10 +7,9 @@ import androidx.paging.cachedIn
 import com.joseph.tmdb_mvvm.data.MovieListRepository
 import com.joseph.tmdb_mvvm.model.Movie
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.launch
 
 class HomeViewModel @ViewModelInject constructor(
-        private val movieListRepository: MovieListRepository
+    private val movieListRepository: MovieListRepository
 ) : ViewModel() {
 
     private var popularMovieList: Flow<PagingData<Movie>>? = null
@@ -24,7 +23,7 @@ class HomeViewModel @ViewModelInject constructor(
         }
 
         val newResult: Flow<PagingData<Movie>> =
-                movieListRepository.fetchPopularMovieList().cachedIn(viewModelScope)
+            movieListRepository.fetchPopularMovieList().cachedIn(viewModelScope)
         popularMovieList = newResult
 
         return newResult
@@ -37,7 +36,7 @@ class HomeViewModel @ViewModelInject constructor(
         }
 
         val newResult: Flow<PagingData<Movie>> =
-                movieListRepository.fetchTopRatedMovieList().cachedIn(viewModelScope)
+            movieListRepository.fetchTopRatedMovieList().cachedIn(viewModelScope)
         topRatedMovieList = newResult
 
         return newResult
@@ -50,11 +49,9 @@ class HomeViewModel @ViewModelInject constructor(
         }
 
         val newResult: Flow<PagingData<Movie>> =
-                movieListRepository.fetchUpComingMovieList().cachedIn(viewModelScope)
+            movieListRepository.fetchUpComingMovieList().cachedIn(viewModelScope)
         upComingMovieList = newResult
 
         return newResult
     }
-
-
 }

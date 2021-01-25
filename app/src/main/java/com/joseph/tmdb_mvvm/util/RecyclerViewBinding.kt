@@ -1,18 +1,11 @@
 package com.joseph.tmdb_mvvm.util
 
 import androidx.databinding.BindingAdapter
-import androidx.paging.PagingData
-import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.joseph.tmdb_mvvm.model.Movie
 import com.joseph.tmdb_mvvm.model.MovieCredits
 import com.joseph.tmdb_mvvm.ui.activity.detail.adapter.CreditsAdapter
 import com.joseph.tmdb_mvvm.ui.activity.detail.adapter.RecommendAdapter
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
-
 
 @BindingAdapter("adapter")
 fun bindAdapter(view: RecyclerView, adapter: RecyclerView.Adapter<*>) {
@@ -20,7 +13,7 @@ fun bindAdapter(view: RecyclerView, adapter: RecyclerView.Adapter<*>) {
 }
 
 @BindingAdapter("setLayoutManager")
-fun setLayoutManager(view: RecyclerView, lm: RecyclerView.LayoutManager){
+fun setLayoutManager(view: RecyclerView, lm: RecyclerView.LayoutManager) {
     view.layoutManager = lm
 }
 
@@ -37,4 +30,3 @@ fun bindRecommendList(view: RecyclerView, list: List<Movie>?) {
         (view.adapter as RecommendAdapter).submitList(list)
     }
 }
-

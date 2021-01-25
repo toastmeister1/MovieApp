@@ -1,10 +1,8 @@
 package com.joseph.tmdb_mvvm.di
 
-import android.util.Log
 import com.joseph.tmdb_mvvm.network.MovieListClient
 import com.joseph.tmdb_mvvm.network.MovieListService
 import com.joseph.tmdb_mvvm.network.MovieService
-import com.joseph.tmdb_mvvm.util.Constants.TAG
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,20 +26,20 @@ object NetworkModule {
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
 
         return OkHttpClient.Builder()
-                .addInterceptor(loggingInterceptor)
-                .connectTimeout(10, TimeUnit.SECONDS)
-                .readTimeout(10, TimeUnit.SECONDS)
-                .build()
+            .addInterceptor(loggingInterceptor)
+            .connectTimeout(10, TimeUnit.SECONDS)
+            .readTimeout(10, TimeUnit.SECONDS)
+            .build()
     }
 
     @Provides
     @Singleton
     fun provideRetrofitClient(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-                .client(okHttpClient)
-                .baseUrl("https://api.themoviedb.org/3/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
+            .client(okHttpClient)
+            .baseUrl("https://api.themoviedb.org/3/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
     }
 
     @Provides
@@ -52,7 +50,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideMovieListClient(movieListService: MovieListService) : MovieListClient {
+    fun provideMovieListClient(movieListService: MovieListService): MovieListClient {
         return MovieListClient(movieListService)
     }
 

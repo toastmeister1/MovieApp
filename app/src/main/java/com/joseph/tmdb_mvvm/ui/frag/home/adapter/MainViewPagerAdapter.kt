@@ -1,11 +1,9 @@
 package com.joseph.tmdb_mvvm.ui.frag.home.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.joseph.tmdb_mvvm.R
 import com.joseph.tmdb_mvvm.databinding.ItemMainViewpagerBinding
 import com.joseph.tmdb_mvvm.ui.frag.home.model.ViewPagerInfo
@@ -39,6 +37,5 @@ class MainViewPagerAdapter : RecyclerView.Adapter<MainViewPagerAdapter.MainViewP
                 viewPagerItem = info
             }
         }
-
     }
 }

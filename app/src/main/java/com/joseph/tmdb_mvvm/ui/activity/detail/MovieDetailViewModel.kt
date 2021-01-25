@@ -14,9 +14,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class MovieDetailViewModel @ViewModelInject constructor(
-        private val movieRepository: MovieRepository?,
-        private val movieListRepository: MovieListRepository,
-        @Assisted private val savedStateHandle: SavedStateHandle
+    private val movieRepository: MovieRepository?,
+    private val movieListRepository: MovieListRepository,
+    @Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     private var _movieId = MutableLiveData<Int>()
@@ -62,5 +62,4 @@ class MovieDetailViewModel @ViewModelInject constructor(
     private suspend fun getRecommendMovieList(movieId: Int) = withContext(Dispatchers.IO) {
         movieListRepository.fetchRecommendMovieList(movieId)
     }
-
 }

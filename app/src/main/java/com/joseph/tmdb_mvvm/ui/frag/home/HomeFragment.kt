@@ -78,5 +78,4 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             orientation = ViewPager2.ORIENTATION_HORIZONTAL
         }
     }
-
 }

@@ -1,6 +1,5 @@
 package com.joseph.tmdb_mvvm.model
 
-
 import com.google.gson.annotations.SerializedName
 
 data class MovieList(

@@ -24,7 +24,7 @@ class RecommendAdapter : RecyclerView.Adapter<RecommendAdapter.RecommandViewHold
     override fun onBindViewHolder(holder: RecommandViewHolder, position: Int) {
         holder.binding.apply {
             movie = movieList[position]
-            root.setOnClickListener{
+            root.setOnClickListener {
                 val intent = Intent(it.context, MovieDetailActivity::class.java)
                 intent.putExtra("movieId", movieList[position].id)
                 it.context.startActivity(intent)

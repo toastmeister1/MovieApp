@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class HomeViewModelFactory @Inject constructor(
     private val repository: MovieListRepository
-): ViewModelProvider.Factory {
+) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
@@ -15,5 +15,4 @@ class HomeViewModelFactory @Inject constructor(
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
-
 }

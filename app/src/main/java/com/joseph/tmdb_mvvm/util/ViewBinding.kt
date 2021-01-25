@@ -4,8 +4,6 @@ import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.core.view.isGone
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,18 +20,18 @@ const val IMAGE_URL_ORIGIN = "https://image.tmdb.org/t/p/original"
 @BindingAdapter("setImageWithSrc")
 fun setImageWithSrc(view: ImageView, src: Int) {
     Glide.with(view.context)
-            .load(src)
-            .into(view)
+        .load(src)
+        .into(view)
 }
 
 @BindingAdapter("setThumbImageWithURL")
 fun setThumbImageWithUrl(view: ImageView, url: String?) {
     if (url != null) {
         Glide.with(view.context)
-                .load(IMAGE_URL_THUMB + url)
-                .override(320, 480)
-                .placeholder(R.drawable.image_placeholder)
-                .into(view)
+            .load(IMAGE_URL_THUMB + url)
+            .override(320, 480)
+            .placeholder(R.drawable.image_placeholder)
+            .into(view)
     }
 }
 
@@ -41,12 +39,11 @@ fun setThumbImageWithUrl(view: ImageView, url: String?) {
 fun setOriginImageWithUrl(view: ImageView, url: String?) {
     if (url != null) {
         Glide.with(view.context)
-                .load(IMAGE_URL_ORIGIN + url)
-                .placeholder(R.drawable.image_placeholder)
-                .into(view)
+            .load(IMAGE_URL_ORIGIN + url)
+            .placeholder(R.drawable.image_placeholder)
+            .into(view)
     }
 }
-
 
 @BindingAdapter("initHorizonRecyclerAdapter")
 fun initHorizontalRecyclerAdapter(view: RecyclerView, adapter: MovieListAdapter) {
@@ -100,5 +97,3 @@ fun isYouthCanWatch(view: TextView, isAdult: Boolean) {
 fun bindGone(view: View, shouldBeGone: Boolean) {
     view.gone(shouldBeGone)
 }
-
-
