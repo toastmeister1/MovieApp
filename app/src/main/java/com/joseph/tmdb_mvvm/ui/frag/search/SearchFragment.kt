@@ -1,5 +1,6 @@
 package com.joseph.tmdb_mvvm.ui.frag.search
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import com.joseph.tmdb_mvvm.R
