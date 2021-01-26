@@ -1,7 +1,10 @@
 package com.joseph.tmdb_mvvm.ui.frag.home
 
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
@@ -22,9 +25,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private val homeViewModel by viewModels<HomeViewModel>()
     private lateinit var viewPagerAdater: MainViewPagerAdapter
 
+
     private var popularListJob: Job? = null
     private var upComingListJob: Job? = null
     private var topRatedListJob: Job? = null
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
