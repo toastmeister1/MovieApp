@@ -39,7 +39,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             setOnNavigationItemSelectedListener { item ->
                 navController.navigate(item.itemId, null)
                 if(item.itemId == R.id.homeFragment) {
-                    window?.statusBarColor = Color.TRANSPARENT
+                    window?.statusBarColor = Color.argb(0,100,100,100)
                 } else {
                     window.statusBarColor = ContextCompat.getColor(this@MainActivity, R.color.blackBlendedWhite)
                 }

@@ -4,9 +4,9 @@
     app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/categoryFragment"
-        android:name="com.joseph.tmdb_mvvm.ui.frag.category.CategoryFragment"
-        android:label="CategoryFragment" />
+        android:id="@+id/rateFragment"
+        android:name="com.joseph.tmdb_mvvm.ui.frag.category.RateFragment"
+        android:label="RateFragment" />
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.joseph.tmdb_mvvm.ui.frag.search.SearchFragment"

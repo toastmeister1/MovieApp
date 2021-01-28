@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.View
 import com.joseph.tmdb_mvvm.R
 import com.joseph.tmdb_mvvm.base.BaseFragment
-import com.joseph.tmdb_mvvm.databinding.FragmentCategoryBinding
+import com.joseph.tmdb_mvvm.databinding.FragmentRateBinding
 
-class CategoryFragment : BaseFragment<FragmentCategoryBinding>(R.layout.fragment_category) {
+class RateFragment : BaseFragment<FragmentRateBinding>(R.layout.fragment_rate) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

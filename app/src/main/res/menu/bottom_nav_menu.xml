@@ -5,9 +5,9 @@
         android:icon="@drawable/ic_home"
         android:title="홈"/>
 
-    <item android:id="@+id/categoryFragment"
-        android:icon="@drawable/ic_category"
-        android:title="카테고리"/>
+    <item android:id="@+id/rateFragment"
+        android:icon="@drawable/ic_star"
+        android:title="별점주기"/>
 
     <item android:id="@+id/searchFragment"
         android:icon="@drawable/ic_search"
