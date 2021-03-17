@@ -1,5 +1,6 @@
 package com.joseph.tmdb_mvvm.ui.activity.detail
 
+import android.app.usage.UsageEvents
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
