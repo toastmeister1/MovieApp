@@ -1,6 +1,5 @@
 package com.joseph.tmdb_mvvm.ui.activity.detail
 
-import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager

@@ -20,7 +20,6 @@ interface MovieListService {
         @Query("page") page: Int = 1,
         @Query("language") language: String = "ko-KR",
         @Query("api_key") api_key: String = BuildConfig.TMDB_API_KEY
-
     ): MovieList
 
     @GET("movie/upcoming")

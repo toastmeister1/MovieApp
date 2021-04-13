@@ -28,7 +28,7 @@ subprojects {
     val ktlint by configurations.creating
 
     dependencies {
-        ktlint("com.pinterest:ktlint:0.40.0")
+        ktlint("com.pinterest:ktlint:0.41.0")
         // ktlint(project(":custom-ktlint-ruleset")) // in case of custom ruleset
     }
 
