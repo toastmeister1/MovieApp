@@ -1,18 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.frag.search.SearchFragment">
+        android:background="@color/blackBlendedWhite"
+        android:fitsSystemWindows="true">
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
+        <EditText
+            android:id="@+id/edt_search_movie"
+            style="@style/SearchViewTextStyle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:layout_height="52dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/shape_rounded_rect"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="12dp"
+            android:hint="검색어를 입력해주세요"
+            android:padding="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </FrameLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_searched_movies"
+            android:layout_width="match_parent"
+            android:padding="12dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_search_movie" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
